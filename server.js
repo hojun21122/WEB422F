@@ -23,8 +23,16 @@ app.use(bodyParser.json());
 
 const HTTP_PORT = process.env.PORT || 8080;
 
-// ************* API Routes
 
+app.get("/", (req, res) => {
+    res.send("Hello World!");
+});
+// ************* API Routes
+app.get("/api/sales", (req, res) =>{
+    myData.getAllSales(req.query.page, req.query.perPage)
+    .then((val)=>{res.status(200).json(val);})
+    .catch((err)=> {res.status(400).json(err);})
+})
 
 // POST /api/sales (NOTE: This route must read the contents of the request body)
 app.post("/api/sales", (req, res) => {
