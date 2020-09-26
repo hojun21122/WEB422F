@@ -5,7 +5,7 @@
 * (including web sites) or distributed to other students.
 *
 * Name: Ho Jun Hwang Student ID: 112384169 Date: 2020/09/25
-* Heroku Link: _______________________________________________________________
+* Heroku Link: https://still-escarpment-20853.herokuapp.com/
 *
 ********************************************************************************/ 
 const express = require("express");
@@ -31,7 +31,8 @@ app.get("/", (req, res) => {
 
 // POST /api/sales (NOTE: This route must read the contents of the request body)
 app.post("/api/sales", (req, res) => {
-    myData.addNewSale(req.body).then(()=>{
+    myData.addNewSale(req.body)
+    .then(()=>{
         res.status(201).json("new sale is successfully added to the doc");
     }).catch((err)=>{
         res.status(400).json(err);
@@ -57,7 +58,8 @@ app.get("/api/sales/:id", (req, res) =>{
 
 // PUT /api/sales (NOTE: This route must accept a numeric route parameter, ie: /api/sales/5bd761dcae323e45a93ccfe8 as well as read the contents of the request body)
 app.put("/api/sales/:id", (req, res) =>{
-    myData.updateSaleById(req.body, req.params.id).then(()=>{
+    myData.updateSaleById(req.body, req.params.id)
+    .then(()=>{
         res.status(200).json(`sale ${req.params.id} successfully updated`);
     }).catch((err)=>{
         res.status(404).json(err);
@@ -67,7 +69,8 @@ app.put("/api/sales/:id", (req, res) =>{
 
 // DELETE /api/sales (NOTE: This route must accept a numeric route parameter, ie: /api/sales/5bd761dcae323e45a93ccfe8)
 app.delete("/api/sales/:id", (req, res) =>{
-    myData.deleteSaleById(req.params.id).then(()=>{
+    myData.deleteSaleById(req.params.id)
+    .then(()=>{
         res.status(200).json(`${req.params.id} successfully deleted`);
     }).catch((err)=>{
         res.status(404).json(err);
