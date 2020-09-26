@@ -20,7 +20,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-const HTTP_PORT = process.env.PORT || '8080';
+const HTTP_PORT = process.env.PORT || 8080;
 
 
 app.get("/", (req, res) => {
