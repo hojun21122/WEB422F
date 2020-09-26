@@ -12,7 +12,6 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const dataService = require("./modules/data-service.js");
-const path = require("path");
 const myData = dataService("mongodb+srv://dbUser:ghwns211@cluster0.vor5b.mongodb.net/sample_supplies?retryWrites=true&w=majority");
 
 const app = express();
@@ -27,6 +26,7 @@ const HTTP_PORT = process.env.PORT || 8080;
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
+
 // ************* API Routes
 app.get("/api/sales", (req, res) =>{
     myData.getAllSales(req.query.page, req.query.perPage)
@@ -55,8 +55,8 @@ app.get("/api/sales", (req, res) =>{
 // GET /api/sales (NOTE: This route must accept a numeric route parameter, ie: /api/sales/5bd761dcae323e45a93ccfe8)
 app.get("/api/sales/:id", (req, res) =>{
     myData.getSaleById(req.params.id)
-    .then((val)=> {res.status(200).json(val)})
-    .catch((err) => {res.send(err)})
+    .then((val)=> {res.status(200).json(val);})
+    .catch((err) => {res.send(err);})
 })
 
 
