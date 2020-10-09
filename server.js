@@ -24,7 +24,7 @@ const HTTP_PORT = process.env.PORT || 8080;
 
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("Hello World");
 });
 
 // ************* API Routes
@@ -71,7 +71,7 @@ app.put("/api/sales/:id", (req, res) =>{
 app.delete("/api/sales/:id", (req, res) =>{
     myData.deleteSaleById(req.params.id)
     .then(()=>{
-        res.status(200).json(`${req.params.id} successfully deleted`);
+        res.status(200).json(`${req.params.id} successfully deleted!`);
     }).catch((err)=>{
         res.status(404).json(err);
       });
